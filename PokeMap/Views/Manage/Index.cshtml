@@ -1,0 +1,85 @@
+﻿@model PokeMap.Models.MyUserViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal" >
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+</div>
+<div>
+    <h4>My Sightings</h4>
+    <table class="table">
+        <tr>
+            <th>
+                Type
+            </th>
+            <th>
+                PokéMon
+            </th>
+            <th>
+                Longitude
+            </th>
+            <th>
+               Latitude
+            </th>
+            <th>
+                Rarity
+            </th>
+           
+            <th></th>
+        </tr>
+
+    @if (!Model.MySightings.Any())
+    {
+        <tr  ><td colspan="6" align="center"> No submitted sightings </td></tr>
+    }
+
+        @foreach (var item in Model.MySightings)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PokeMon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Sightings", new { id = item.SightingId }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+    
+</div>

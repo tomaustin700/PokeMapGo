@@ -1,0 +1,28 @@
+﻿<div data-bind="dxPopup: { toolbarItems: [
+             { toolbar: 'bottom', location: 'after', widget: 'button',  options:
+                {
+                   text: isLogin() ? 'Login' : 'Register',
+                   onClick: Register
+                }
+             }], visible: viewModel.showPopup(), width: DevExpress.devices.current().deviceType === 'desktop' ? 400 : 320, height:  DevExpress.devices.current().deviceType === 'desktop' ? 400 : 400, closeOnOutsideClick: true, title:  isLogin() ? 'Login' : 'Register', onHiding: function(){ viewModel.showPopup(false)}, showCloseButton: true}">
+
+    <div id="CredentialsValidation" data-bind="dxValidationGroup: { }">
+
+
+        <div data-bind="validationMessage: credentials.username "></div>
+        <div data-bind="validationMessage: credentials.email"></div>
+        <div data-bind="validationMessage: credentials.password"></div>
+        <div data-bind="validationMessage: credentials.confirmPassword"></div>
+
+        <div data-bind="visible: viewModel.credentials.password() !== viewModel.credentials.confirmPassword() && !viewModel.isLogin()">Passwords do not match</div>
+
+
+        <div style="margin-bottom: 10px;" data-bind="dxTextBox: {value: credentials.username, placeholder: 'Enter Username'  } "></div>
+        <div style="margin-bottom: 10px;" data-bind="dxTextBox: {value: credentials.email, placeholder: 'Enter Email', visible: viewModel.isLogin() ? false : true } "></div>
+        <div style="margin-bottom: 10px;" data-bind="dxTextBox: {value: credentials.password, placeholder: 'Enter Password', mode: 'password', onEnterKey: viewModel.isLogin() ?  Register : '' }"></div>
+        <div style="margin-bottom: 10px;" data-bind="dxTextBox: {value: credentials.confirmPassword, placeholder: 'Confirm Password', visible: viewModel.isLogin() ? false : true, mode: 'password', onEnterKey: Register }"></div>
+        <div style="margin-bottom: 15px; display: block;" data-bind="dxCheckBox: {value: credentials.rememberMe,  visible: viewModel.isLogin() ? true : false, text:'Remember Me?' }"></div>
+        <a style="cursor: pointer; z-index: 10000;  position: absolute; bottom: 20px; left: 20px;" data-bind="dxclick: function(){viewModel.clearCredentials(); viewModel.clearCredentialsValidation(); if(isLogin()){ isLogin(false) }  else { isLogin(true) }}, text: isLogin() ? 'Not Registered?' : 'Already Registered?'  "></a>
+
+    </div>
+</div>

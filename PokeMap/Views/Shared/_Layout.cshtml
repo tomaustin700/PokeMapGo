@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+
+    <title>@ViewBag.Title PokéMap</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Html.Partial("~/Views/Shared/_LoadExternalScripts.cshtml")
+
+
+
+</head>
+<body>
+
+    @*  Renders the sidebar  *@
+    @Html.Partial("~/Views/Sidebar/_Sidebar.cshtml")
+
+    <!-- This is the div that will contain the Google Map -->
+    <div id="map_canvas" style="position: absolute; left: 0; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223); right: 0; bottom: 0; top: 50px;"></div>
+
+    @*  Renders the sidebar Registration Popup *@
+    @Html.Partial("~/Views/Popup/_RegistrationPopup.cshtml")
+
+    @*  Renders the sightings popup / popover / details *@
+    @Html.Partial("~/Views/Popup/_SightingPopup.cshtml")
+
+
+    @* Header *@
+    <header class="flex">
+        @*@Html.ActionLink("PokéMap (Beta)", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+        <div data-bind="visible: DevExpress.devices.current().deviceType === 'desktop', dxclick: function(){ location.reload();}" class="logo">Pokémap Go</div>
+        <div id="searchPokemon" class="header-search" style="margin-left: 20px;" data-bind="dxTextBox: { value: searchValue,  placeholder: 'Pokémon/Location Search', mode: 'search', valueChangeEvent: 'keyup' }"></div>
+        @*<div id="searchPokemon" class="header-search" style="margin-left: 20px;" data-bind="dxSelectBox: {dataSource: pokemon, displayExpr: 'PokemonName', valueExpr: 'EnumId', searchEnabled: true, searchExpr: 'PokemonName', searchMode: 'startswith', value: searchValue,  placeholder: 'Pokémon/Location Search', mode: 'search', valueChangeEvent: 'keyup' }"></div>*@
+        <div style="z-index: 1000;" class="">
+            @Html.Partial("_LoginPartial")
+        </div>
+        <div class="menu">
+            <div class="burger">
+                <div class="burger-1"></div>
+                <div class="burger-2"></div>
+                <div class="burger-3"></div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+
+</html>

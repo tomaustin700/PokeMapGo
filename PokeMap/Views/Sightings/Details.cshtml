@@ -1,0 +1,74 @@
+﻿@model PokeMap.Models.Sighting
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sighting</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rarity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rarity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SightingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

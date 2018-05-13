@@ -1,0 +1,399 @@
+
+body {
+    overflow: hidden;
+}
+
+#sidebar {
+    -webkit-transition: right .3s;
+    border-right: 1px solid lightgrey;
+    background: white;
+    position: absolute;
+    right: -250px;
+    width: 250px;
+    z-index: 1000;
+    bottom: 0;
+    height: calc(100% - 50px);
+}
+
+#sidebar.show {
+    right: 0;
+}
+
+
+.login {
+    width: 100px;
+    text-align: center;
+    background-color: #03A9F4;
+    line-height: 50px!important;
+    color: #fff;
+    padding: 0!important;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.login:hover {
+    color: #fff;
+    background-color: #0092d4!important;
+}
+
+.infoDiv {
+    height: 200px;
+    width: 300px;
+    -webkit-user-select: none;
+    background-color: white;
+}
+
+
+.context {
+    cursor: pointer;
+    padding-bottom: 10px;
+    font-size: 10pt;
+    padding-top: 10px;
+}
+
+
+.contextmenuStyle {
+    padding: 5px;
+    visibility: hidden;
+    background: #ffffff;
+    border: 1px solid lightgrey;
+    box-shadow: 2px 2px 5px grey;
+    z-index: 10;
+    position: absolute;
+    width: 160px;
+}
+
+    .contextmenuStyle div {
+        padding-left: 5px;
+    }
+
+.ContextMenuButton:hover {
+    /*opacity: .5;*/
+    background-color: rgba(240,240,240, .8);
+}
+
+button {
+    background-color: #80ccff !important; /* Green */
+    border: none;
+    color: white;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Pikachu Image for Lols*/
+.bgimg {
+    background-image: url('../Images/Pikachu.jpg');
+    background-size: 100%;
+}
+
+
+
+.flex {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flexRatio1 {
+    -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1; /* OLD - Firefox 19- */
+    width: 20%; /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1; /* Chrome */
+    -ms-flex: 1; /* IE 10 */
+    flex: 1;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #B6B6B6;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.logo {
+    width: 200px;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 50px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.header-search {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    border: 0;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: 300;
+    font-size: 15px;
+    font-family: 'lato', sans-serif;
+    color: #212121;
+    border: 1px solid #B6B6B6;
+    z-index: 1000;
+}
+
+.login {
+    width: 100px;
+    text-align: center;
+    background-color: #03A9F4;
+    line-height: 50px;
+}
+
+.menu {
+    width: 50px;
+    background-color: #212121;
+    position: relative;
+    cursor: pointer;
+}
+
+    .menu:hover {
+        background-color: #000;
+    }
+
+.burger {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    height: auto;
+    transform: translate(-50%, -50%);
+}
+
+.burger-1, .burger-2, .burger-3 {
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+    background-color: #fff;
+    position: relative;
+}
+
+.add-button {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #03A9F4;
+    cursor: pointer;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    z-index: 1;
+    overflow: hidden;
+}
+
+    .add-button:hover {
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+        width: 180px;
+    }
+
+    .add-button:active {
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.26) !important;
+        transition-duration: 0.1s;
+    }
+
+    .add-button:hover span {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .add-button:hover:before {
+        left: 25px;
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+
+    .add-button:hover:after {
+        left: 25px;
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+
+    .add-button:before {
+        content: "";
+        width: 20px;
+        height: 4px;
+        border-radius: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: #fff;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        -ms-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .add-button:after {
+        content: "";
+        width: 20px;
+        height: 4px;
+        border-radius: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: #fff;
+        -webkit-transform: translate(-50%, -50%) rotate(90deg);
+        -moz-transform: translate(-50%, -50%) rotate(90deg);
+        -ms-transform: translate(-50%, -50%) rotate(90deg);
+        transform: translate(-50%, -50%) rotate(90deg);
+        -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        -ms-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .add-button span {
+        position: absolute;
+        top: 50%;
+        left: 50px;
+        width: 100%;
+        white-space: nowrap;
+        transform: translateY(-50%);
+        opacity: 0;
+        visibility: hidden;
+        color: #fff;
+        font-weight: 200;
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -ms-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -ms-transition-delay: 0s;
+        transition-delay: 0s;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 300;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .add-button span.innactive {
+        opacity: 0!important;
+        visibility: hidden!important;
+    }
+
+    .add-button.cancel{
+        background-color: #F44336;
+        width: 140px;
+    }
+
+    .add-button.cancel span {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .add-button.cancel:before {
+        left: 25px;
+        -webkit-transform: translate(-50%, -50%) rotate(135deg);
+        -moz-transform: translate(-50%, -50%) rotate(135deg);
+        -ms-transform: translate(-50%, -50%) rotate(135deg);
+        transform: translate(-50%, -50%) rotate(135deg);
+    }
+
+    .add-button.cancel:after {
+        left: 25px;
+        -webkit-transform: translate(-50%, -50%) rotate(-135deg);
+        -moz-transform: translate(-50%, -50%) rotate(-135deg);
+        -ms-transform: translate(-50%, -50%) rotate(-135deg);
+        transform: translate(-50%, -50%) rotate(-135deg);
+    }
+
+    @media screen and (max-width: 1024px) {
+        .add-button {
+            width: 50px!important;
+        }
+        .add-button span {
+            opacity: 0!important;
+            visibility: hidden!important;
+        }
+    }
+
+.location-button {
+    display: block;
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #FF5252;
+    cursor: pointer;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    z-index: 1;
+}
+
+    .location-button svg {
+        position: absolute;
+        width: 24px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-55%, -48%);
+    }
+
+    .location-button:hover {
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .location-button:active {
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.26) !important;
+        transition-duration: 0.1s;
+    }
+
+/*section {
+	position: relative;
+	width: 100%;
+	height: calc(100% - 51px);
+}*/
+
+.map {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-size: cover;
+}
+
+
+/* DevExpress Overrides */
+/* DevExpress Fixes for search box  */
+.dx-searchbox .dx-icon-search {
+    position: absolute !important;
+}
+
+.dx-texteditor-input, .dx-searchbox .dx-placeholder:before {
+    padding: 6px 12px!important;
+}
+
+.dx-searchbox .dx-icon-search {
+    display: none;
+}
+
+
+

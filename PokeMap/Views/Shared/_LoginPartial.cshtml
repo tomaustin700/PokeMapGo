@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-right">
+        @*<li>
+            @Html.ActionLink("My Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>*@
+
+      
+        <li><a class="login" href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul style="margin: 0 !important" class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+
+        @*<li>
+            <a style="cursor: pointer" data-bind="dxclick: function(){ viewModel.ShowPopup(false) }  ">Register</a>
+        </li>*@
+        <li>
+            <a class="login" data-bind="dxclick: function(){ viewModel.clearCredentials(), viewModel.ShowPopup(true), viewModel.clearCredentialsValidation()  } ">Login</a>
+        </li>
+    </ul>
+} 
+
+<script>
+      
+   
+
+    viewModel.delayedValue = ko.pureComputed(viewModel.searchValue)
+          .extend({
+              rateLimit: { method: "notifyWhenChangesStop", timeout: 2000 },
+          }),
+    viewModel.delayedValue.subscribe(function (val) {
+        if (val !== '')
+            bounds = map.getBounds();
+            searchValue = viewModel.searchValue();
+            GetSightings(bounds)
+    }, this)
+
+    //ko.validation.group(viewModel),
+
+    //ko.validation.init({
+    //    decorateInputElement: true,
+    //    errorElementClass: 'err',
+    //    grouping: { deep: true, observable: false }
+
+    //});
+
+    ko.applyBindingsWithValidation(viewModel)
+
+
+    // Extend Observable Credential Confirm Password
+
+</script>

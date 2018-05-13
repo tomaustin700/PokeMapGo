@@ -1,0 +1,155 @@
+﻿@* Create Popoup *@
+<div data-bind="dxPopup:  { toolbarItems: [
+         { toolbar: 'bottom', location: 'after', widget: 'button',  options:
+            {
+               text: 'Add',
+               onClick: function(){ CreateSighting(viewModel.selectedPosition(), viewModel.selectedSighting().Type() ) }
+            }
+         }], visible: showSightingPopup,  showTitle: true, title: 'Create Sighthing', width: DevExpress.devices.current().deviceType === 'desktop' ? 400 : 320, height:  DevExpress.devices.current().deviceType === 'desktop' ? 400 : 400, closeOnOutsideClick: true, onHiding: function(){ viewModel.showSightingPopup(false)}, showCloseButton: true}">
+
+
+    @*<div data-bind="validationMessage: selectedSighting().Pokemon "></div>
+        <div data-bind="validationMessage: selectedSighting().Time"></div>
+        <div data-bind="validationMessage: selectedSighting().Rarity"></div>*@
+
+
+    <div style="margin-bottom: 10px;" data-bind="dxSelectBox: { dataSource: sightingType, placeholder: 'Select Sighting...', displayExpr: 'Type', valueExpr: 'Id', value: viewModel.selectedSighting().Type }"></div>
+    
+    <div data-bind="visible: viewModel.selectedSighting().Type() === 0">
+        <div style="margin-bottom: 10px;" data-bind="dxSelectBox: { dataSource: pokemon, placeholder: 'Select Pokemon...', displayExpr: 'PokemonName', valueExpr: 'EnumId', value: viewModel.selectedSighting().Pokemon },  style: { border: (viewModel.selectedSighting().Pokemon() === undefined || viewModel.selectedSighting().Pokemon()   || viewModel.selectedSighting().Pokemon() === 0)  ? '1px solid lightgrey' : '1px solid red' }"></div>
+        <div style="margin-bottom: 10px;" data-bind="dxTagBox: { dataSource: timeOfDay, placeholder: 'Time Of Day...', displayExpr: 'Time', valueEpxr: 'Id',  value: viewModel.selectedSighting().Time },  style: { border: (viewModel.selectedSighting().Time() === undefined || viewModel.selectedSighting().Time())  ? '1px solid lightgrey' : '1px solid red' }"></div>
+        <div style="margin-bottom: 10px;" data-bind="dxSelectBox: { dataSource: rarity, placeholder: 'Rarity...', displayExpr: 'Rarity', valueExpr: 'Id', value: viewModel.selectedSighting().Rarity },  style: { border: (viewModel.selectedSighting().Rarity() === undefined || viewModel.selectedSighting().Rarity()   || viewModel.selectedSighting().Rarity() === 0)  ? '1px solid lightgrey' : '1px solid red' }"></div>
+    </div>
+
+</div>
+
+
+
+
+@* Create Sighting Popover *@
+<div data-bind="dxPopover: { toolbarItems: [
+         { toolbar: 'bottom', location: 'after', widget: 'button',  options:
+            {
+               text: 'Add',
+               onClick: function(){ CreateSighting(viewModel.selectedPosition(), 0 ) }
+            }
+         }], visible: popover.visible, target: popover.target, showTitle: false, closeOnOutsideClick: true, width:  300, height: 240 } ">
+    <h3 style="margin-bottom: 10px;" data-bind="text: 'New Sighting'"></h3>
+
+    @*<div data-bind="validationMessage: selectedSighting().Pokemon "></div>
+        <div data-bind="validationMessage: selectedSighting().Time"></div>
+        <div data-bind="validationMessage: selectedSighting().Rarity"></div>*@
+
+    <div style="margin-bottom: 10px;" data-bind="dxSelectBox: { dataSource: pokemon, placeholder: 'Select Pokemon...', displayExpr: 'PokemonName', valueExpr: 'EnumId', searchEnabled: true, searchExpr: 'PokemonName', searchMode: 'startswith',  value: viewModel.selectedSighting().Pokemon },  style: { border: (viewModel.selectedSighting().Pokemon() === undefined || viewModel.selectedSighting().Pokemon()  || viewModel.selectedSighting().Pokemon() === 0)  ? '1px solid lightgrey' : '1px solid red' }"></div>
+    <div style="margin-bottom: 10px;" data-bind="dxTagBox: { dataSource: timeOfDay, placeholder: 'Time Of Day...', displayExpr: 'Time', valueEpxr: 'Id',  value: viewModel.selectedSighting().Time },  style: { border: (viewModel.selectedSighting().Time() === undefined || viewModel.selectedSighting().Time())  ? '1px solid lightgrey' : '1px solid red' }"></div>
+    <div style="margin-bottom: 10px;" data-bind="dxSelectBox: {dataSource: rarity, placeholder: 'Rarity...', displayExpr: 'Rarity', valueExpr: 'Id', value: viewModel.selectedSighting().Rarity },  style: { border: (viewModel.selectedSighting().Rarity() === undefined || viewModel.selectedSighting().Rarity()   || viewModel.selectedSighting().Rarity() === 0)  ? '1px solid lightgrey' : '1px solid red' }"></div>
+</div>
+
+
+@* Create Sighting Popover manually left click*@
+<div data-bind="dxPopover: { toolbarItems: [
+         { toolbar: 'bottom', location: 'after', widget: 'button',  options:
+            {
+               text: 'Add',
+               onClick: function(){CreateSighting(viewModel.selectedPosition(), viewModel.selectedSighting().Type() ) },
+               disabled: !viewModel.selectedPosition()
+            }
+         }], visible: manualAddPopover.visible, target: manualAddPopover.target, showTitle: false, closeOnOutsideClick: false, width: 300, height: 320 } ">
+    @*<h3 style="margin-bottom: 10px;" data-bind="text: 'New Sighting'"></h3>*@
+    <p style="margin-bottom: 15px;">Click on the map to choose the location of your sighting.</p>
+    @*<div data-bind="validationMessage: selectedSighting().Pokemon "></div>
+        <div data-bind="validationMessage: selectedSighting().Time"></div>
+        <div data-bind="validationMessage: selectedSighting().Rarity"></div>*@
+    <div style="margin-bottom: 10px;" data-bind="dxSelectBox: { dataSource: sightingType, placeholder: 'Select Sighting...', displayExpr: 'Type', valueExpr: 'Id', value: viewModel.selectedSighting().Type }"></div>
+    
+    <div data-bind="visible: viewModel.selectedSighting().Type() === 0">
+        <div style="margin-bottom: 10px;" data-bind="dxSelectBox: { dataSource: pokemon, placeholder: 'Select Pokemon...', displayExpr: 'PokemonName', valueExpr: 'EnumId', searchEnabled: true, searchExpr: 'PokemonName', searchMode: 'startswith',  value: viewModel.selectedSighting().Pokemon },  style: { border: (viewModel.selectedSighting().Pokemon() === undefined || viewModel.selectedSighting().Pokemon()  || viewModel.selectedSighting().Pokemon() === 0)  ? '1px solid lightgrey' : '1px solid red' }"></div>
+        <div style="margin-bottom: 10px;" data-bind="dxTagBox: { dataSource: timeOfDay, placeholder: 'Time Of Day...', displayExpr: 'Time', valueEpxr: 'Id',  value: viewModel.selectedSighting().Time },  style: { border: (viewModel.selectedSighting().Time() === undefined || viewModel.selectedSighting().Time())  ? '1px solid lightgrey' : '1px solid red' }"></div>
+        <div style="margin-bottom: 10px;" data-bind="dxSelectBox: {dataSource: rarity, placeholder: 'Rarity...', displayExpr: 'Rarity', valueExpr: 'Id', value: viewModel.selectedSighting().Rarity },  style: { border: (viewModel.selectedSighting().Rarity() === undefined || viewModel.selectedSighting().Rarity()   || viewModel.selectedSighting().Rarity() === 0)  ? '1px solid lightgrey' : '1px solid red' }"></div>
+    </div>
+  
+</div>
+
+
+
+@* Display Pin Details *@
+<div data-bind="dxPopover: { toolbarItems: [
+         { toolbar: 'bottom', location: 'after', widget: 'button',  options:
+            {
+               text: 'Delete',
+               onClick: DeletePin,
+               visible: (viewModel.userDetails() && viewModel.selectedMarker()) ? (viewModel.userDetails().IsAdmin || viewModel.userDetails().Id === viewModel.selectedMarker().Sighting.AspNetUserId) : false
+            }
+         }], visible: markerPopover.visible, target: markerPopover.target, showTitle: false, closeOnOutsideClick: true, width:  320, height: 180 } ">
+
+
+
+
+
+    <div style="display: block">
+        <h1 style="margin-bottom: 10px; display: inline; font-size: 20px; font-weight: bold;" data-bind="text: viewModel.selectedSighting().Type() == 'Pokémon' ? viewModel.selectedSighting().PokeMon() :  viewModel.selectedSighting().Type() == 'Pokéstop' ? 'Pokéstop' : 'Pokégym' "> </h1>
+
+        <div style="padding: 5px; display: inline; margin-left: 5px; " class="fa fa-trophy"
+             data-bind="style: { color: viewModel.sightingUserRating() === 'Bronze' ? 'Sienna' : viewModel.sightingUserRating() === 'Silver' ?  'Silver' : 'DarkGoldenRod', },
+              visible: viewModel.sightingUserRating() == 'No Rating' ? false : true  ">
+            <span class="tooltiptext" data-bind="text: viewModel.sightingUserRating() === 'Bronze' ? 'Bronze Contributor' : viewModel.sightingUserRating() === 'Silver' ?  'Silver Contributor' : 'Top Contributor'"></span>
+        </div>
+
+    </div>
+
+    <div data-bind="visible: viewModel.selectedSighting().Type() == 'Pokémon'">
+        <div style="display: block">
+            <h3 style="display: inline; width:50px!important;" data-bind="text: 'Rarity: ' "></h3>
+            <h3 style="display: inline; margin-bottom: 10px!important;" data-bind="text: viewModel.selectedSighting().Rarity "></h3>
+        </div>
+
+
+        <div style="display: block">
+            <h3 style="display: inline; width:50px!important;" data-bind="text: 'Seen: ' "></h3>
+            <h3 style="display: inline; margin-bottom: 10px!important;" data-bind="text: viewModel.selectedSighting().TimeOfDay "></h3>
+        </div>
+
+        <div style="display: block" data-bind="visible: viewModel.selectedSighting().Notes ">
+            <h3 style="display: inline; width:50px!important;" data-bind="text: 'Near: ' "></h3>
+            <h3 style="display: inline; margin-bottom: 10px!important;" data-bind="text: viewModel.selectedSighting().Notes "></h3>
+        </div>
+    </div>
+
+
+
+
+
+    <div style="position: absolute; top: 10px; right: 20px; " class="">
+        <div style="cursor: pointer;  padding: 5px;" class="fa fa-thumbs-up" data-bind="dxclick: function(){ if(viewModel.votingDirection() === 'Down' || viewModel.votingDirection() == 'NoVote' ) { viewModel.UpdateRating(true) }  }, style: { color: viewModel.votingDirection() === 'Up' ? 'green' : 'black'  }"></div>
+
+        @*<div style="cursor: pointer; padding: 5px;" class="fa fa-thumbs-up" data-bind="style: {dxclick: function(){ viewModel.UpdateRating(true) }, color: viewModel.selectedMarker().Sighting.Rating > 0 ? 'darkgreen' : 'red' }"></div>*@
+        <div style="cursor: pointer;  padding: 5px;" data-bind="text: viewModel.selectedSighting().Rating()"></div>
+        <div style="cursor: pointer;  padding: 5px;" class="fa fa-thumbs-down" data-bind="dxclick: function(){ if(viewModel.votingDirection() === 'Up' || viewModel.votingDirection() == 'NoVote' ) { viewModel.UpdateRating(false) }  }, style: { color: viewModel.votingDirection() === 'Down' ? 'red' : 'black' }"></div>
+    </div>
+
+
+    @*<h3 style="margin-bottom: 10px;" data-bind="text: viewModel.selectedSighting().Rarity, visible: viewModel.selectedSighting().Type() == 'Pokémon' "></h3>*@
+    @*<h3 style="margin-bottom: 10px;" data-bind="text: viewModel.selectedSighting().TimeOfDay,  visible: viewModel.selectedSighting().Type() == 'Pokémon' "></h3>*@
+</div>
+
+
+
+
+@* Display Pin Details *@
+<div data-bind="dxPopover: { toolbarItems: [
+         { toolbar: 'bottom', location: 'after', widget: 'button',  options:
+            {
+               text: 'Delete',
+               onClick: '',
+            }
+         }], visible: clusterPopover.visible, target: clusterPopover.target, showTitle: false, closeOnOutsideClick: true, width:  320, height: 180 } ">
+
+
+    <div data-bind="dxList: {dataSource: viewModel.distinctPokemon(), pageLoadMode: 'scrollBottom', onItemClick: ''  }">
+        <div data-bind="text: Name"></div>
+        <div data-bind="text: Amount"></div>
+
+    </div>
+</div>
+
+
